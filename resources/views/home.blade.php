@@ -14,6 +14,7 @@
                         </div>
                     @endif
                     test
+                    HAI,WELCOME BACK TO MY CHANNEL!!
                     {{ __('You are logged in!') }}
                 </div>
             </div>
