@@ -485,7 +485,7 @@
                             </div>
                         </form>
                     </li>
-                    <li class="start active ">
+                    {{-- <li class="start active ">
                         <a href="{{ route('categories.index') }}">
                             <i class="icon-home"></i>
                             <span class="title">Category</span>
@@ -506,7 +506,7 @@
                             <span class="selected "></span>
                         </a>
 
-                    </li>
+                    </li> --}}
                     <li>
                         <a href="javascript:;">
                             <i class="icon-calendar"></i>
