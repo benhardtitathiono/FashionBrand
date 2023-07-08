@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -17,26 +18,26 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Ardi',
             'email' => 'ardi@gmail.com',
-            'password' => '12345',
-            'roles_id'   => '2'
+            'password' => Hash::make('12345678'),
+            'roles'   => 'Owner'
         ]);
         DB::table('users')->insert([
             'name' => 'Steven',
             'email' => 'steven@gmail.com',
-            'password' => '123',
-            'roles_id'   => '2'
+            'password' => Hash::make('12345678'),
+            'roles'   => 'Owner'
         ]);
         DB::table('users')->insert([
             'name' => 'Alfath',
             'email' => 'alfath@gmail.com',
-            'password' => '345',
-            'roles_id'   => '1'
+            'password' => Hash::make('12345678'),
+            'roles'   => 'Customer'
         ]);
         DB::table('users')->insert([
             'name' => 'Benhard',
             'email' => 'benhard@gmail.com',
-            'password' => '567',
-            'roles_id'   => '3'
+            'password' => Hash::make('12345678'),
+            'roles'   => 'Staff'
         ]);
     }
 }

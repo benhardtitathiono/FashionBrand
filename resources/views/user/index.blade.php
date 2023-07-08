@@ -17,22 +17,22 @@
             @if (session('status'))
                 <div class="alert alert-success">{{ session('status') }}</div>
             @endif
-
-            <a href="{{ route('products.create') }}" class="btn btn-success"> + New Product</a>
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Role</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($data as $d)
                         <tr>
                             <td>{{ $d->id }}</td>
-                            <td>{{ $d->brand_name }}</td>
-                            <td>{{ $d->brand_address }}</td>
+                            <td>{{ $d->name }}</td>
+                            <td>{{ $d->email }}</td>
+                            <td>{{ $d->role }}</td>
                             {{-- <td>
                                 <a href="{{ route('products.edit', $d->id) }}" class="btn btn-success">Edit</a>
                                 <form method="POST" action="{{ route('products.destroy', $d->id) }}">
