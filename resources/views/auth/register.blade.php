@@ -71,14 +71,16 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="form-group row">
                                 <label for="roles-row"
                                     class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
                                 <div class="col-md-6">
-                                    <select class="form-control" name="roles" id="roles" form="rolesform">
-                                        <option value="{{ old('customer') }}">Customer</option>
-                                        <option value="{{ old('owner') }}">Owner</option>
-                                        <option value="{{ old('staff') }}">Staff</option>
+                                <!-- <input id="roles" type="text" class="form-control"
+                                        name="roles" value="{{ old('roles') }}"> -->
+                                    <select name="roles" id="roles" form="rolesform">
+                                        <option value="customer">Customer</option>
+                                        <option value="owner">Owner</option>
+                                        <option value="staff">Staff</option>
                                     </select>
                                 </div>
                             </div>
