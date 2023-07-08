@@ -14,9 +14,7 @@ class AddRolesIdColumn extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('roles_id');
-
-            $table->foreign('roles_id')->references('id')->on('roles');
+            $table->string('roles');
         });
     }
 
@@ -28,8 +26,7 @@ class AddRolesIdColumn extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['roles_id']);
-            $table->dropColumn('roles_id');
+            $table->dropColumn('roles');
         });
     }
 }
