@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Shop | E-Shopper</title>
+    <title>Shop | Fashion Brand</title>
     <link href="{{ asset('Eshopper/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('Eshopper/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('Eshopper/css/prettyPhoto.css') }}" rel="stylesheet">
@@ -16,7 +16,7 @@
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
-    <![endif]-->       
+    <![endif]-->
     <link rel="shortcut icon" href="{{ asset('images/ico/favicon.ico ')}}">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('Eshopper/images/ico/apple-touch-icon-144-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('Eshopper/images/ico/apple-touch-icon-114-precomposed.png') }}">
@@ -26,7 +26,7 @@
 
 <body>
 	<header id="header"><!--header-->
-		
+
 		<div class="header-middle"><!--header-middle-->
 			<div class="container">
 				<div class="row">
@@ -45,7 +45,7 @@
 				</div>
 			</div>
 		</div><!--/header-middle-->
-	
+
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
 				<div class="row">
@@ -63,7 +63,7 @@
 								<li><a href="index.html">Home</a></li>
 								<li>
 									<a href="#" class="active">Shop</a>
-                                </li> 
+                                </li>
 							</ul>
 						</div>
 					</div>
@@ -76,7 +76,7 @@
 				</div>
 			</div>
 	</header>
-	
+
 	<section>
 		<div class="container">
 			<div class="row">
@@ -87,34 +87,40 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
+                                        @foreach ($cat as $c)
 										<a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
 											<span class="badge pull-right"></span>
-											Sportswear
+											{{ $c->category_name }}
 										</a>
+                                        <br></br>
+                                        @endforeach
 									</h4>
 								</div>
 							</div>
 						</div><!--/category-productsr-->
-					
+
 						<div class="brands_products"><!--brands_products-->
 							<h2>Brands</h2>
 							<div class="brands-name">
-								<ul class="nav nav-pills nav-stacked">
-									<li><a href=""> Acne</a></li>
+
+                                @foreach ($brand as $b)
+                                <ul class="nav nav-pills nav-stacked">
+									<li><a href=""> {{ $b->brand_name }}</a></li>
 								</ul>
+                                @endforeach
 							</div>
 						</div><!--/brands_products-->
-						
-						
+
+
 					</div>
 				</div>
-				
-				<div class="col-sm-9 padding-right">
+
+				<div class="col-sm-9 padding-left">
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">Features Items</h2>
-						
+
 						@foreach ($data as $d)
-						<div class="col-md-4">
+						<div class="col-md-3">
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
@@ -134,21 +140,21 @@
 							</div>
 						</div>
 						@endforeach
-						
-						
-						
-						<ul class="pagination">
-							<li class="active"><a href="">1</a></li>
-							<li><a href="">2</a></li>
-							<li><a href="">3</a></li>
-							<li><a href="">&raquo;</a></li>
-						</ul>
+
 					</div><!--features_items-->
+
+                    <ul class="pagination">
+                        <li class="active"><a href="">1</a></li>
+                        <li><a href="">2</a></li>
+                        <li><a href="">3</a></li>
+                        <li><a href="">&raquo;</a></li>
+                    </ul>
+
 				</div>
 			</div>
 		</div>
 	</section>
-  
+
     <script src="{{ asset('Eshopper/js/jquery.js') }}"></script>
 	<script src="{{ asset('Eshopper/js/price-range.js') }}"></script>
     <script src="{{ asset('Eshopper/js/jquery.scrollUp.min.js') }}"></script>

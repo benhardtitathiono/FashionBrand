@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class ProductPageController extends Controller
@@ -16,7 +18,9 @@ class ProductPageController extends Controller
     {
         //
         $data=Product::all();
-        return view('public.index',compact('data'));
+        $cat = Category::all();
+        $brand = Brand::all();
+        return view('public.index',compact('data','cat','brand'));
     }
 
     /**
