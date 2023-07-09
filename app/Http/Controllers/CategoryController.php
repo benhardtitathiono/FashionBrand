@@ -90,6 +90,24 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $objCategory = Category::find($id);
+            $objCategory->delete();
+            return redirect()->route('categories.index')->with('status', 'Successfull');
+        } catch (\PDOException $ex) {
+            $msg = "Delete Failed";
+            return redirect()->route('categories.index')->with('status', $msg);
+        }
+    }
+
+    public function deleteData(Request $request)
+    {
+        $id = $request->get('id');
+        $data = Category::find($id);
+        $data->delete();
+        return response()->json(array(
+            'status' => 'oke',
+            'msg' => 'Category is removed'
+        ), 200);
     }
 }

@@ -92,6 +92,24 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $objBrand = Brand::find($id);
+            $objBrand->delete();
+            return redirect()->route('brands.index')->with('status', 'Successfull');
+        } catch (\PDOException $ex) {
+            $msg = "Delete Failed";
+            return redirect()->route('brands.index')->with('status', $msg);
+        }
+    }
+
+    public function deleteData(Request $request)
+    {
+        $id = $request->get('id');
+        $data = Brand::find($id);
+        $data->delete();
+        return response()->json(array(
+            'status' => 'oke',
+            'msg' => 'Brand is removed'
+        ), 200);
     }
 }

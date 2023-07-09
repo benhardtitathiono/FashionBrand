@@ -28,3 +28,6 @@ Route::resource('products', ProductController::class);
 Route::resource('users', UserController::class);
 Route::resource('brands', BrandController::class);
 Route::resource('categories', CategoryController::class);
+
+Route::post('customkategori/deleteData', [CategoryController::class, "deleteData"])->name('category.deleteData');
+Route::post('customekategori/deleteData', [BrandController::class, "deleteData"])->name('brand.deleteData');
