@@ -37,7 +37,7 @@
                             <td>{{ $d->brand_name }}</td>
                             <td>{{ $d->brand_address }}</td>
                             <td>
-                                <a class="btn btn-info" onClick="showProduct({{ $d->id }})">Product</a>
+                                <a href="{{ route('brands.showProduct', $d->id) }}" class='btn btn-info'>Product</a>
                             </td>
                             <td>
                                 @can('access-permission', $d)
@@ -61,4 +61,21 @@
     </body>
 
     </html>
+@endsection
+@section('javascript')
+    <script>
+        function showProduct(product_brand) {
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('product.productbrand') }}",
+                data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    'product_brand': product_brand
+                },
+                success: function(data) {
+                    $('#showproduct').html(data.msg)
+                }
+            });
+        }
+    </script>
 @endsection

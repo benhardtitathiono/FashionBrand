@@ -94,10 +94,10 @@ class BrandController extends Controller
     {
         //
     }
-    public function showProduct()
+    public function showProduct($id)
     {
-        $brand = Brand::find($_POST['product_brand']);
-        $name = $brand->brand_name;
+        $brand = Brand::find($id);
+        $name = $brand->product_brand;
         $data = $brand->products;
         return response()->json(array(
             'status' => 'oke',

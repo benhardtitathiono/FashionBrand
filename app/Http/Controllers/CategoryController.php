@@ -61,7 +61,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $this->authorize('edit-permission', $id);
+        $this->authorize('access-permission', $id);
         $objCategory = Category::find($id);
         $data = $objCategory;
         return view('category.formedit', compact('data'));

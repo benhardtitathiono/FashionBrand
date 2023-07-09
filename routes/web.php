@@ -28,4 +28,4 @@ Route::resource('products', ProductController::class);
 Route::resource('users', UserController::class);
 Route::resource('brands', BrandController::class);
 Route::resource('categories', CategoryController::class);
-Route::post('/brand/showProducts', [BrandController::class, 'showProducts'])->name('product.productbrand');
+Route::post('/product/{id}/productbrand', [BrandController::class, 'showProduct'])->name('product.productbrand');
