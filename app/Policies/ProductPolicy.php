@@ -21,7 +21,7 @@ class ProductPolicy
     }
     public function access(User $user)
     {
-        return ($user->roles == "Owner" || "Staff"
+        return ($user->roles == "Owner" || $user->roles == "Staff"
             ? Response::allow()
             : Response::deny('You must be a staff administrator'));
     }

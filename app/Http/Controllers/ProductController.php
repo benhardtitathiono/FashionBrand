@@ -107,6 +107,13 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $objProduct = Product::find($id);
+            $objProduct->delete();
+            return redirect()->route('products.index')->with('status', 'Successfull');
+        } catch (\PDOException $ex) {
+            $msg = "Delete Failed";
+            return redirect()->route('products.index')->with('status', $msg);
+        }
     }
 }
