@@ -27,20 +27,6 @@ class LoginController extends Controller
      *
      * @var string
      */
-    public function redirectTo()
-    {
-        $role = Auth::user()->role;
-        switch ($role) {
-            case 'Customer':
-                return '/products';
-                break;
-            case 'Owner':
-                return '/users';
-                break;
-            case 'Staff':
-                return '/brands';
-        }
-    }
     protected $redirectTo = '/products';
 
     /**

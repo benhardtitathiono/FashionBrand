@@ -71,17 +71,13 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="roles-row"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
+                            <div class="row mb-3">
+                                <label for="roles-row" class="col-md-4 col-form-label text-md-end">Role</label>
                                 <div class="col-md-6">
-                                <!-- <input id="roles" type="text" class="form-control"
-                                        name="roles" value="{{ old('roles') }}"> -->
-                                    <select name="roles" id="roles" form="rolesform">
-                                        <option value="customer">Customer</option>
-                                        <option value="owner">Owner</option>
-                                        <option value="staff">Staff</option>
-                                    </select>
+                                    <input type="radio" name="roles" value="Customer"> Customer
+                                    <input type="radio" name="roles" value="Owner"> Owner
+                                    <input type="radio" name="roles" value="Staff"> Staff
+
                                 </div>
                             </div>
 
