@@ -198,6 +198,8 @@
                             <li>
                                 <a href="/categories">
                                     Category List</a>
+                            </li>
+                            <li>
                                 <a href="/categories/create">
                                     Add Category</a>
                             </li>
