@@ -94,14 +94,4 @@ class BrandController extends Controller
     {
         //
     }
-    public function showProduct($id)
-    {
-        $brand = Brand::find($id);
-        $name = $brand->product_brand;
-        $data = $brand->products;
-        return response()->json(array(
-            'status' => 'oke',
-            'msg' => view('product.productbrand', compact('name', 'data'))->render()
-        ), 200);
-    }
 }

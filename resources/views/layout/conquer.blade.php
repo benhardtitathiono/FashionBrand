@@ -196,7 +196,9 @@
                         </a>
                         <ul class="sub-menu">
                             <li>
-                                <a href="/category/create">
+                                <a href="/categories">
+                                    Category List</a>
+                                <a href="/categories/create">
                                     Add Category</a>
                             </li>
                         </ul>
