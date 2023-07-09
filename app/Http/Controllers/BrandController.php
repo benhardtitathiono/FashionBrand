@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Brand;
+use App\Models\Product;
 
 class BrandController extends Controller
 {
@@ -49,9 +50,8 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
     }
 
     /**
@@ -93,5 +93,15 @@ class BrandController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function showProduct()
+    {
+        $brand = Brand::find($_POST['product_brand']);
+        $name = $brand->brand_name;
+        $data = $brand->products;
+        return response()->json(array(
+            'status' => 'oke',
+            'msg' => view('product.productbrand', compact('name', 'data'))->render()
+        ), 200);
     }
 }

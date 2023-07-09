@@ -18,15 +18,18 @@
                 <div class="alert alert-success">{{ session('status') }}</div>
             @endif
             @can('access-permission')
-                <a href="{{ route('brands.create') }}" class="btn btn-success"> + New Brand</a>
+                <a href="{{ route('products.create') }}" class="btn btn-success"> + New Product</a>
             @endcan
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Address</th>
-                        <th>Product</th>
+                        <th>Price</th>
+                        {{-- <th>Dimension</th> --}}
+                        <th>Category</th>
+                        <th>Brand</th>
+                        <th>Type</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -34,17 +37,18 @@
                     @foreach ($data as $d)
                         <tr>
                             <td>{{ $d->id }}</td>
-                            <td>{{ $d->brand_name }}</td>
-                            <td>{{ $d->brand_address }}</td>
-                            <td>
-                                <a class="btn btn-info" onClick="showProduct({{ $d->id }})">Product</a>
-                            </td>
+                            <td>{{ $d->product_name }}</td>
+                            <td>Rp. {{ $d->product_price }}</td>
+                            {{-- <td>{{ $d->product_dimension }}</td> --}}
+                            <td>{{ $d->category->category_name }}</td>
+                            <td>{{ $d->brand->brand_name }}</td>
+                            <td>{{ $d->type->name }}</td>
                             <td>
                                 @can('access-permission', $d)
-                                    <a href="{{ route('brands.edit', $d->id) }}" class="btn btn-success">Edit</a>
+                                    <a href="{{ route('products.edit', $d->id) }}" class="btn btn-success">Edit</a>
                                 @endcan
                                 @can('delete-permission', $d)
-                                    <form method="POST" action="{{ route('brands.destroy', $d->id) }}">
+                                    <form method="POST" action="{{ route('products.destroy', $d->id) }}">
                                         @csrf
                                         @method('DELETE')
                                         <input type="submit" value="Delete" class="btn btn-danger"
