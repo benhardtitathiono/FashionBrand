@@ -88,4 +88,27 @@ class ProductPageController extends Controller
     {
         //
     }
+
+    public function addToCart($id){
+        $p=Product::find($id);
+
+        $cart=session()->get('cart');
+        if(!isset($cart[$id])){
+            $cart[$id]=[
+                "name"=>$p->product_name,
+                "quantity"=>1,
+                "price"=>$p->product_price,
+                "photo"=>$p->image_product
+            ];
+        }   
+        else{
+            $cart[$id]["quantity"]++;
+        }
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success','Horrey Product telah ditambahkan');
+    }
+
+    public function cart(){
+        return view('public.cart');
+    }
 }

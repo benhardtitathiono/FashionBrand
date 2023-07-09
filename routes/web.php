@@ -36,3 +36,5 @@ Route::post('/product/{id}/productbrand', [BrandController::class, 'showProduct'
 
 Route::get('product-page',[ProductPageController::class,'index']);
 
+Route::get('cart', [ProductPageController::class,'cart']);
+Route::get('product-page/addcart/{id}',[ProductPageController::class, 'addToCart'])->name('addToCart');

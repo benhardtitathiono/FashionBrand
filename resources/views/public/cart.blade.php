@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Shop | Fashion Brand</title>
+    <title>Cart | E-Shopper</title>
     <link href="{{ asset('Eshopper/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('Eshopper/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('Eshopper/css/prettyPhoto.css') }}" rel="stylesheet">
@@ -16,7 +16,7 @@
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
-    <![endif]-->
+    <![endif]-->       
     <link rel="shortcut icon" href="{{ asset('images/ico/favicon.ico ')}}">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('Eshopper/images/ico/apple-touch-icon-144-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('Eshopper/images/ico/apple-touch-icon-114-precomposed.png') }}">
@@ -26,7 +26,7 @@
 
 <body>
 	<header id="header"><!--header-->
-
+		
 		<div class="header-middle"><!--header-middle-->
 			<div class="container">
 				<div class="row">
@@ -38,14 +38,15 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="/cart"><i class="fa fa-shopping-cart"></i>Cart</a></li>
+								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+								<li><a href="cart.html" class="active"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div><!--/header-middle-->
-
+	
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
 				<div class="row">
@@ -61,9 +62,7 @@
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html">Home</a></li>
-								<li>
-									<a href="#" class="active">Shop</a>
-                                </li>
+								<li><a href="#">Shop</a></li> 
 							</ul>
 						</div>
 					</div>
@@ -73,93 +72,98 @@
 						</div>
 					</div>
 				</div>
-				</div>
 			</div>
-	</header>
+		</div><!--/header-bottom-->
+	</header><!--/header-->
 
-	<section>
+	<section id="cart_items">
 		<div class="container">
+			<div class="breadcrumbs">
+				<ol class="breadcrumb">
+				  <li><a href="#">Home</a></li>
+				  <li class="active">Shopping Cart</li>
+				</ol>
+			</div>
+			<div class="table-responsive cart_info">
+				<table class="table table-condensed">
+					<thead>
+						<tr class="cart_menu">
+							<td class="image">Item</td>
+							<td class="description"></td>
+							<td class="price">Price</td>
+							<td class="quantity">Quantity</td>
+							<td class="total">Total</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+						@if (session('cart'))
+							@foreach (session('cart') as $d=>$details)
+							@php
+								$total=0;
+								$total+= $details['price']*$details['quantity'];
+							@endphp
+							<tr>
+								<td class="cart_product">
+									<a href=""><img src="Eshopper/images/shop/{{ $details['photo'] }}" alt=""></a>
+								</td>
+								<td class="cart_description">
+									<h4><a href="">{{ $details['name'] }}</a></h4>
+								</td>
+								<td class="cart_price">
+									<p>Rp {{ $details['price'] }}</p>
+								</td>
+								<td class="cart_quantity">
+									<div class="cart_quantity_button">
+										<input class="cart_quantity_input" type="text" name="quantity" value="{{ $details['quantity'] }}" autocomplete="off" size="2">
+									</div>
+								</td>
+								<td class="cart_total">
+									<p class="cart_total_price">Rp {{ $details['price']*$details['quantity'] }}</p>
+								</td>
+								<td class="cart_delete">
+									<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+								</td>
+							</tr>
+							@endforeach
+						@endif
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section> <!--/#cart_items-->
+
+	<section id="do_action">
+		<div class="container">
+			<div class="heading">
+				<h3>What would you like to do next?</h3>
+			</div>
 			<div class="row">
-				<div class="col-sm-3">
-					<div class="left-sidebar">
-						<h2>Category</h2>
-						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-                                        @foreach ($cat as $c)
-										<a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-											<span class="badge pull-right"></span>
-											{{ $c->category_name }}
-										</a>
-                                        <br></br>
-                                        @endforeach
-									</h4>
-								</div>
-							</div>
-						</div><!--/category-productsr-->
-
-						<div class="brands_products"><!--brands_products-->
-							<h2>Brands</h2>
-							<div class="brands-name">
-
-                                @foreach ($brand as $b)
-                                <ul class="nav nav-pills nav-stacked">
-									<li><a href=""> {{ $b->brand_name }}</a></li>
-								</ul>
-                                @endforeach
-							</div>
-						</div><!--/brands_products-->
-
-
+				<div class="col-sm-6">
+					<div class="total_area">
+						<ul>
+							<li>Cart Sub Total <span>Rp. {{ $total }}</span></li>
+							<li>Eco Tax <span>$2</span></li>
+							<li>Shipping Cost <span>Free</span></li>
+							<li>Total <span>$61</span></li>
+						</ul>
+							<a class="btn btn-default update" href="">Update</a>
+							<a class="btn btn-default check_out" href="">Check Out</a>
 					</div>
-				</div>
-
-				<div class="col-sm-9 padding-left">
-					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">Features Items</h2>
-
-						@foreach ($data as $d)
-						<div class="col-md-3">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="{{ asset('Eshopper/images/shop/'.$d->image_product) }}" alt="" />
-										<h2>Rp {{ $d->product_price }}</h2>
-										<p>{{ $d->product_name }}</p>
-										<a href="{{ route('addToCart',$d->id) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-									<div class="product-overlay">
-										<div class="overlay-content">
-											<h2>Rp {{ $d->product_price }}</h2>
-											<p>{{ $d->product_name }}</p>
-											<a href="{{ route('addToCart',$d->id) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						@endforeach
-
-					</div><!--features_items-->
-
-                    <ul class="pagination">
-                        <li class="active"><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">&raquo;</a></li>
-                    </ul>
-
 				</div>
 			</div>
 		</div>
-	</section>
+	</section><!--/#do_action-->
+	
+	<script src="{{ asset('Eshopper/js/jquery.js') }}"></script>
 
-    <script src="{{ asset('Eshopper/js/jquery.js') }}"></script>
-	<script src="{{ asset('Eshopper/js/price-range.js') }}"></script>
     <script src="{{ asset('Eshopper/js/jquery.scrollUp.min.js') }}"></script>
+
 	<script src="{{ asset('Eshopper/js/bootstrap.min.js') }}"></script>
+
     <script src="{{ asset('Eshopper/js/jquery.prettyPhoto.js') }}"></script>
+
     <script src="{{ asset('Eshopper/js/main.js') }}"></script>
+
 </body>
 </html>
