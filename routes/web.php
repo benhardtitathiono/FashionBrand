@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,7 @@ Route::resource('categories', CategoryController::class);
 
 Route::post('customkategori/deleteData', [CategoryController::class, "deleteData"])->name('category.deleteData');
 Route::post('customekategori/deleteData', [BrandController::class, "deleteData"])->name('brand.deleteData');
+Route::post('/product/{id}/productbrand', [BrandController::class, 'showProduct'])->name('product.productbrand');
+
+Route::get('product-page',[ProductPageController::class,'index']);
+
