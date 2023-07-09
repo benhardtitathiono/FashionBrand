@@ -29,9 +29,8 @@ Route::resource('products', ProductController::class);
 Route::resource('users', UserController::class);
 Route::resource('brands', BrandController::class);
 Route::resource('categories', CategoryController::class);
-<<<<<<< Updated upstream
-=======
+
 Route::post('/product/{id}/productbrand', [BrandController::class, 'showProduct'])->name('product.productbrand');
 
 Route::get('product-page',[ProductPageController::class,'index']);
->>>>>>> Stashed changes
+
