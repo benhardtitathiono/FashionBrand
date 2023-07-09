@@ -196,6 +196,10 @@
                         </a>
                         <ul class="sub-menu">
                             <li>
+                                <a href="/categories">
+                                    Category List</a>
+                            </li>
+                            <li>
                                 <a href="/category/create">
                                     Add Category</a>
                             </li>
