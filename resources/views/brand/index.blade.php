@@ -17,7 +17,7 @@
             @if (session('status'))
                 <div class="alert alert-success">{{ session('status') }}</div>
             @endif
-            @can('add-permission')
+            @can('access-permission')
                 <a href="{{ route('brands.create') }}" class="btn btn-success"> + New Brand</a>
             @endcan
             <table class="table table-striped">
@@ -35,7 +35,7 @@
                             <td>{{ $d->brand_name }}</td>
                             <td>{{ $d->brand_address }}</td>
                             <td>
-                                @can('edit-permission', $d)
+                                @can('access-permission', $d)
                                     <a href="{{ route('brands.edit', $d->id) }}" class="btn btn-success">Edit</a>
                                 @endcan
                                 @can('delete-permission', $d)

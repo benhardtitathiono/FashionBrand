@@ -19,9 +19,9 @@ class ProductPolicy
     {
         //
     }
-    public function edit(User $user)
+    public function access(User $user)
     {
-        return ($user->roles == "Staff" && "Owner"
+        return ($user->roles == "Owner" || "Staff"
             ? Response::allow()
             : Response::deny('You must be a staff administrator'));
     }
@@ -30,11 +30,5 @@ class ProductPolicy
         return ($user->roles == "Owner"
             ? Response::allow()
             : Response::deny('You must be an Owner'));
-    }
-    public function add(User $user)
-    {
-        return ($user->roles == "Owner" && "Staff"
-            ? Response::allow()
-            : Response::deny('You must be an Administrator'));
     }
 }
