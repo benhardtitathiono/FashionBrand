@@ -62,7 +62,7 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        $this->authorize('edit-permission', $id);
+        $this->authorize('access-permission', $id);
         $objBrand = Brand::find($id);
         $data = $objBrand;
         return view('brand.formedit', compact('data'));
