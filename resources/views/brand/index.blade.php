@@ -17,8 +17,9 @@
             @if (session('status'))
                 <div class="alert alert-success">{{ session('status') }}</div>
             @endif
-
-            <a href="{{ route('products.create') }}" class="btn btn-success"> + New Product</a>
+            @can('add-permission')
+                <a href="{{ route('brands.create') }}" class="btn btn-success"> + New Brand</a>
+            @endcan
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -33,15 +34,19 @@
                             <td>{{ $d->id }}</td>
                             <td>{{ $d->brand_name }}</td>
                             <td>{{ $d->brand_address }}</td>
-                            {{-- <td>
-                                <a href="{{ route('products.edit', $d->id) }}" class="btn btn-success">Edit</a>
-                                <form method="POST" action="{{ route('products.destroy', $d->id) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input type="submit" value="Delete" class="btn btn-danger"
-                                        onClick="return confirm('Do You agree to delete with {{ $d->id }}-{{ $d->name }}?');">
-                                </form>
-                            </td> --}}
+                            <td>
+                                @can('edit-permission', $d)
+                                    <a href="{{ route('brands.edit', $d->id) }}" class="btn btn-success">Edit</a>
+                                @endcan
+                                @can('delete-permission', $d)
+                                    <form method="POST" action="{{ route('brands.destroy', $d->id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" value="Delete" class="btn btn-danger"
+                                            onClick="return confirm('Do You agree to delete with {{ $d->id }}-{{ $d->name }}?');">
+                                    </form>
+                                @endcan
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

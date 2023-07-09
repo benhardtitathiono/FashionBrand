@@ -21,7 +21,7 @@ class ProductPolicy
     }
     public function edit(User $user)
     {
-        return ($user->roles == "Staff"
+        return ($user->roles == "Staff" && "Owner"
             ? Response::allow()
             : Response::deny('You must be a staff administrator'));
     }
