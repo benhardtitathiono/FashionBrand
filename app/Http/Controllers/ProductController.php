@@ -28,7 +28,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $modelCat = Category::all();
+        $modelBrand = Brand::all();
+        $modelType = Type::all();
+        return view('product.formcreate', compact('modelCat', 'modelBrand', 'modelType'));
     }
 
     /**
@@ -39,7 +42,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Product();
+        $data->product_name = $request->get('namePro');
+        $data->product_price = $request->get('price');
+        $data->product_category = $request->get('category');
+        $data->product_brand = $request->get('brand');
+        $data->product_type = $request->get('type');
+        $data->save();
+        return redirect()->route('products.index')->with('status', 'Success');
     }
 
     /**
@@ -61,7 +71,13 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->authorize('edit-permission', $id);
+        $objProduct = Product::find($id);
+        $modelCat = Category::all();
+        $modelBrand = Brand::all();
+        $modelType = Type::all();
+        $data = $objProduct;
+        return view('product.formedit', compact('data', 'modelCat', 'modelBrand', 'modelType'));
     }
 
     /**
@@ -73,7 +89,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $objProduct = Product::find($id);
+        $objProduct->product_name = $request->get('nameProduct');
+        $objProduct->product_price = $request->get('priceProduct');
+        $objProduct->product_category = $request->get('proCate');
+        $objProduct->product_brand = $request->get('proBrand');
+        $objProduct->product_type = $request->get('proType');
+        $objProduct->save();
+        return redirect()->route('products.index')->with('status', 'Your Product Updated');
     }
 
     /**
