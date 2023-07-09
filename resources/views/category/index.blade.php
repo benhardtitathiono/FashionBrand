@@ -30,7 +30,7 @@
                 </thead>
                 <tbody>
                     @foreach ($data as $d)
-                        <tr>
+                        <tr id="tr_{{$d->id}}">
                             <td>{{ $d->id }}</td>
                             <td>{{ $d->category_name }}</td>
                             <td>
@@ -42,7 +42,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <input type="submit" value="Delete" class="btn btn-danger"
-                                            onClick="return confirm('Do You agree to delete with {{ $d->id }}-{{ $d->name }}?');">
+                                            onClick="return confirm('Do You agree to delete with {{ $d->id }}-{{ $d->category_name }}?')">
                                     </form>
                                 @endcan
                             </td>
@@ -55,4 +55,24 @@
     </body>
 
     </html>
+@endsection
+
+@section('javascript')
+<script>
+    function deleteDataRemoveTR(id) {
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('category.deleteData') }}",
+                data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    'id': id
+                },
+                success: function(data) {
+                    if (data.status == 'oke') {
+                        $('#tr_' + id).remove();
+                    }
+                }
+            })
+        }
+</script>
 @endsection
