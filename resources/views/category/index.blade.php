@@ -17,7 +17,7 @@
             @if (session('status'))
                 <div class="alert alert-success">{{ session('status') }}</div>
             @endif
-            @can('access-permission')
+            @can('edit-permission')
                 <a href="{{ route('categories.create') }}" class="btn btn-success"> + New Product</a>
             @endcan
             <table class="table table-striped">
@@ -34,7 +34,7 @@
                             <td>{{ $d->id }}</td>
                             <td>{{ $d->category_name }}</td>
                             <td>
-                                @can('access-permission', $d)
+                                @can('edit-permission', $d)
                                     <a href="{{ route('categories.edit', $d->id) }}" class="btn btn-success">Edit</a>
                                 @endcan
                                 @can('delete-permission', $d)

@@ -19,7 +19,7 @@ class ProductPolicy
     {
         //
     }
-    public function access(User $user)
+    public function edit(User $user)
     {
         return ($user->roles == "Owner" || "Staff"
             ? Response::allow()

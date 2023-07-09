@@ -164,7 +164,7 @@
                             <li>
                                 <a href="/products">
                                     Product List</a>
-                                @can('access-permission')
+                                @can('edit-permission')
                                     <a href="/products/create">
                                         Add Product</a>
                                 @endcan
@@ -181,7 +181,7 @@
                             <li>
                                 <a href="/brands">
                                     Brands List</a>
-                                @can('access-permission')
+                                @can('edit-permission')
                                     <a href="/brands/create">
                                         Add Brand</a>
                                 @endcan
