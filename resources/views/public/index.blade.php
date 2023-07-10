@@ -14,6 +14,7 @@
     <link href="{{ asset('Eshopper/css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('Eshopper/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('Eshopper/css/responsive.css') }}" rel="stylesheet">
+	<link href="{{ asset('Eshopper/css/indexpublic.css') }}" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -46,7 +47,9 @@
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
                                 <li><a href="/cart"><i class="fa fa-shopping-cart"></i>Cart</a></li>
-								<li><a href="/products">Dashboard</a></li>
+								@can('access-permission')
+								<a href="/products">Dashboard</a></li>
+								@endcan<li >
 								<li>
 									<a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -103,19 +106,17 @@
                         <h2>Category</h2>
                         <div class="panel-group category-products" id="accordian">
                             <!--category-productsr-->
+							@foreach ($cat as $c)
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        @foreach ($cat as $c)
-                                            <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-                                                <span class="badge pull-right"></span>
-                                                {{ $c->category_name }}
-                                            </a>
-                                            <br></br>
-                                        @endforeach
+									
+                                    <h4 class="panel-title"> 
+                                    	{{ $c->category_name }}   
                                     </h4>
+									
                                 </div>
                             </div>
+							@endforeach
                         </div>
                         <!--/category-productsr-->
 
@@ -126,7 +127,7 @@
 
                                 @foreach ($brand as $b)
                                     <ul class="nav nav-pills nav-stacked">
-                                        <li><a href=""> {{ $b->brand_name }}</a></li>
+                                        <li>{{ $b->brand_name }}</li>
                                     </ul>
                                 @endforeach
                             </div>
@@ -170,13 +171,6 @@
 
                     </div>
                     <!--features_items-->
-
-                    <ul class="pagination">
-                        <li class="active"><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">&raquo;</a></li>
-                    </ul>
 
                 </div>
             </div>
