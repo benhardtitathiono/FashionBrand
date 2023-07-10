@@ -47,17 +47,27 @@
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
                                 <li><a href="/cart"><i class="fa fa-shopping-cart"></i>Cart</a></li>
+<<<<<<< Updated upstream
 								@can('access-permission')
 								<a href="/products">Dashboard</a></li>
 								@endcan<li >
 								<li>
 									<a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+=======
+                                @can('access-permission')
+                                    <li><a href="/products">Dashboard</a></li>
+                                @endcan
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+>>>>>>> Stashed changes
                                         {{ __('Logout') }}
                                     </a>
-									<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
                                         @csrf
                                     </form>
-								</li>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -86,11 +96,6 @@
                                     <a href="#" class="active">Shop</a>
                                 </li>
                             </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="search_box pull-right">
-                            <input type="text" placeholder="Search" />
                         </div>
                     </div>
                 </div>
@@ -159,6 +164,9 @@
                                             <div class="overlay-content">
                                                 <h2>Rp {{ $d->product_price }}</h2>
                                                 <p>{{ $d->product_name }}</p>
+                                                <a href="#modaldetails" data-toggle="modal"
+                                                    class="btn btn-warning btn-xs"
+                                                    onclick="getDetails({{ $d->id }})">Details</a><br><br>
                                                 <a href="{{ route('addToCart', $d->id) }}"
                                                     class="btn btn-default add-to-cart"><i
                                                         class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -168,6 +176,15 @@
                                 </div>
                             </div>
                         @endforeach
+                        <div class="modal fade" id="modaldetails" tabindex="-1" role="basic" aria-hidden="true">
+                            <div class="modal-dialog modal-wide">
+                                <div class="modal-content">
+                                    <div class="modal-body" id="modalContent">
+                                        <!--loading animated gif can put here-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                     <!--features_items-->
@@ -186,3 +203,19 @@
 </body>
 
 </html>
+@section('javascript')
+    <script>
+        function getDetails(id) {
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('product.details') }}",
+                data: {
+                    '_token': '<?php echo csrf_token(); ?>',
+                    'id': id
+                },
+                success: function(data) {
+                    $('#modalContent').html(data.msg)
+                }
+            });
+        }
+    </script>

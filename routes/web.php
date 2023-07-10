@@ -32,9 +32,10 @@ Route::resource('categories', CategoryController::class);
 
 Route::post('customkategori/deleteData', [CategoryController::class, "deleteData"])->name('category.deleteData');
 Route::post('customekategori/deleteData', [BrandController::class, "deleteData"])->name('brand.deleteData');
+Route::post('/customcategory/details', [ProductController::class, 'details'])->name('product.details');
 Route::post('/product/{id}/productbrand', [BrandController::class, 'showProduct'])->name('product.productbrand');
 
-Route::get('product-page',[ProductPageController::class,'index']);
+Route::get('product-page', [ProductPageController::class, 'index']);
 
-Route::get('cart', [ProductPageController::class,'cart']);
-Route::get('product-page/addcart/{id}',[ProductPageController::class, 'addToCart'])->name('addToCart');
+Route::get('cart', [ProductPageController::class, 'cart']);
+Route::get('product-page/addcart/{id}', [ProductPageController::class, 'addToCart'])->name('addToCart');

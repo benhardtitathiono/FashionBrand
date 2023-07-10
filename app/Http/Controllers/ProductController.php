@@ -116,4 +116,13 @@ class ProductController extends Controller
             return redirect()->route('products.index')->with('status', $msg);
         }
     }
+    public function details(Request $request)
+    {
+        $id = $request->get('id');
+        $data = Product::find($id);
+        return response()->json(array(
+            'status' => 'oke',
+            'msg' => view('public.details', compact('data'))->render()
+        ));
+    }
 }
