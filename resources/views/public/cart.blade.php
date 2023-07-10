@@ -31,79 +31,7 @@
 <!--/head-->
 
 <body>
-<<<<<<< Updated upstream
-=======
-    <header id="header">
-        <!--header-->
 
-        <div class="header-middle">
-            <!--header-middle-->
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="logo pull-left">
-                            <a href="index.html"><img src="{{ asset('Eshopper/images/home/logo.png') }}"
-                                    alt="" /></a>
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="shop-menu pull-right">
-                            <ul class="nav navbar-nav">
-                                <li><a href="/cart" class="active"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                @can('access-permission')
-                                    <li><a href="/products">Dashboard</a></li>
-                                @endcan
-                                <li>
-                                    <a href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
-                                        @csrf
-                                    </form>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/header-middle-->
-
-        <div class="header-bottom">
-            <!--header-bottom-->
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-9">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                data-target=".navbar-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div class="mainmenu pull-left">
-                            <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="#">Shop</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="search_box pull-right">
-                            <input type="text" placeholder="Search" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/header-bottom-->
-    </header>
-    <!--/header-->
->>>>>>> Stashed changes
     <header id="header">
         <!--header-->
 

@@ -47,20 +47,20 @@
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
                                 <li><a href="/cart"><i class="fa fa-shopping-cart"></i>Cart</a></li>
-<<<<<<< Updated upstream
+
 								@can('access-permission')
 								<a href="/products">Dashboard</a></li>
 								@endcan<li >
 								<li>
 									<a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-=======
+
                                 @can('access-permission')
                                     <li><a href="/products">Dashboard</a></li>
                                 @endcan
                                 <li>
                                     <a href="{{ route('logout') }}"
                                         onclick="event.preventDefault();document.getElementById('logout-form').submit();">
->>>>>>> Stashed changes
+
                                         {{ __('Logout') }}
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
