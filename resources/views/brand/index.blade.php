@@ -31,7 +31,7 @@
                 </thead>
                 <tbody>
                     @foreach ($data as $d)
-                        <tr id="tr_{{$d->id}}">
+                        <tr id="tr_{{ $d->id }}">
                             <td>{{ $d->id }}</td>
                             <td>{{ $d->brand_name }}</td>
                             <td>{{ $d->brand_address }}</td>
@@ -60,8 +60,8 @@
 @endsection
 
 @section('javascript')
-<script>
-    function deleteDataRemoveTR(id) {
+    <script>
+        function deleteDataRemoveTR(id) {
             $.ajax({
                 type: 'POST',
                 url: "{{ route('brand.deleteData') }}",
@@ -76,5 +76,5 @@
                 }
             })
         }
-</script>
+    </script>
 @endsection
