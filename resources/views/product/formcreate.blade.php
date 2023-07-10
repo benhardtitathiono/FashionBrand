@@ -4,7 +4,7 @@
     <p>Our Product here....
 
     </p>
-    <form method="POST" action="{{ route('products.store') }}">
+    <form method="POST" enctype="multipart/form-data" role="form" action="{{ route('products.store') }}">
         @csrf
         <div class="form-group">
             <label class="col-label col-sm-2" for="exampleEmail">Name of Product</label>
@@ -31,6 +31,8 @@
                     <option value="{{ $d->id }}">{{ $d->name }}</option>
                 @endforeach
             </select>
+            <label class="col-label col-sm-2">Foto</label>
+            <input type="file" class="form-control" id="foto" name="foto">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

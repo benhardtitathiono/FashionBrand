@@ -48,9 +48,7 @@
                             <ul class="nav navbar-nav">
                                 <li><a href="/cart"><i class="fa fa-shopping-cart"></i>Cart</a></li>
 
-								@can('access-permission')
-								<a href="/products">Dashboard</a></li>
-								@endcan<li >
+								
 								<li>
 									<a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
 
@@ -153,7 +151,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="{{ asset('images/' . $d->image_product) }}" alt="" />
+                                            <img src="{{ asset('images/' . $d->product_image) }}" alt="" />
                                             <h2>Rp {{ $d->product_price }}</h2>
                                             <p>{{ $d->product_name }}</p>
                                             <a href="{{ route('addToCart', $d->id) }}"

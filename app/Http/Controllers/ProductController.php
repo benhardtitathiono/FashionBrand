@@ -43,11 +43,18 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = new Product();
+        $file=$request->file('foto');
+        $imgFolder='images';
+        $imgFile=time()."_".$file->getClientOriginalName();
+        $file->move($imgFolder, $imgFile);
+        $data->product_image=$imgFile;
+
         $data->product_name = $request->get('namePro');
         $data->product_price = $request->get('price');
         $data->product_category = $request->get('category');
         $data->product_brand = $request->get('brand');
         $data->product_type = $request->get('type');
+
         $data->save();
         return redirect()->route('products.index')->with('status', 'Success');
     }

@@ -211,6 +211,12 @@
                                 <span class="title">Home</span>
                             </a>
                         </li>
+                        <li class="last ">
+                            <a href="/product-page">
+                                <i class="icon-user"></i>
+                                <span class="title">Public</span>
+                            </a>
+                        </li>
                     </ul>
                     <!-- END SIDEBAR MENU -->
                 </div>
