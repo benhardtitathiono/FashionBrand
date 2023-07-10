@@ -138,7 +138,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="{{ asset('images/' . $d->id) }}" alt="" />
+                                            <img src="{{ asset('images/' . $d->image_product) }}" alt="" />
                                             <h2>Rp {{ $d->product_price }}</h2>
                                             <p>{{ $d->product_name }}</p>
                                             <a href="{{ route('addToCart', $d->id) }}"
